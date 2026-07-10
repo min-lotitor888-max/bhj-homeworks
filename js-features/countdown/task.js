@@ -20,3 +20,17 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateTimer() {
         if (totalSeconds <= 0) {
             alert('Вы победили в конкурсе!');
+
+            window.location.href = fileUrl;
+
+            clearInterval(timerInterval);
+            return;
+        }
+
+        timerElement.textContent = formatTime(totalSeconds);
+        totalSeconds--;
+    }
+
+    timerElement.textContent = formatTime(totalSeconds);
+    const timerInterval = setInterval(updateTimer, 1000);
+});
